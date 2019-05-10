@@ -8,9 +8,6 @@ import javax.sound.sampled.Clip;
 
 public class PlayAudio {
 
-	
-	int song = 0;
-	int stopvar = 0;
 	static int seconds = 1;
 	static int milliseconds = 500;
 	
@@ -37,8 +34,6 @@ public class PlayAudio {
     
     public void stop() {
   			
-    	//clip.stop();
-
     }
 
 }
