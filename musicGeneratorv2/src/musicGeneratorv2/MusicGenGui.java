@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 public class MusicGenGui {
 
 	private JFrame frame;
-	private JTextField textChordInput;
 
 	/**
 	 * Launch the application.
@@ -48,9 +47,6 @@ public class MusicGenGui {
 		JButton btnTestPlay = new JButton("New button");
 		btnTestPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int playChord = 0;
-				String amt = textChordInput.getText();
-				playChord = Integer.parseInt(amt);
 				
 				for(int i = 0; i <= 36; i ++) {
 					
@@ -61,11 +57,6 @@ public class MusicGenGui {
 		});
 		btnTestPlay.setBounds(149, 190, 89, 23);
 		frame.getContentPane().add(btnTestPlay);
-		
-		textChordInput = new JTextField();
-		textChordInput.setBounds(149, 141, 86, 20);
-		frame.getContentPane().add(textChordInput);
-		textChordInput.setColumns(10);
 	}
 
 }
