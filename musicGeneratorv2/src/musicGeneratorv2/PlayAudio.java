@@ -23,6 +23,7 @@ public class PlayAudio {
       		   clip = AudioSystem.getClip();
       	 	   clip.open(AudioSystem.getAudioInputStream(file));
       	 	   clip.start();
+      	 	   System.out.println(playChord);
       	 	   TimeUnit.SECONDS.sleep(seconds);
       	 	   TimeUnit.MILLISECONDS.sleep(milliseconds);
       	 	   clip.stop();

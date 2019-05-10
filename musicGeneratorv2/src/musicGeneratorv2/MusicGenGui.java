@@ -45,10 +45,6 @@ public class MusicGenGui {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(423, 266, -164, -290);
-		frame.getContentPane().add(btnNewButton);
-		
 		JButton btnTestPlay = new JButton("New button");
 		btnTestPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -56,7 +52,11 @@ public class MusicGenGui {
 				String amt = textChordInput.getText();
 				playChord = Integer.parseInt(amt);
 				
-				PlayAudio.play(playChord);
+				for(int i = 0; i <= 36; i ++) {
+					
+					PlayAudio.play(i);
+				
+				}
 			}
 		});
 		btnTestPlay.setBounds(149, 190, 89, 23);
