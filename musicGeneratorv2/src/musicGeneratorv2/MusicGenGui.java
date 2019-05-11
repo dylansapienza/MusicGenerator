@@ -120,10 +120,11 @@ public class MusicGenGui {
 			public void actionPerformed(ActionEvent e) {
 				
 				int [] playChords = new int [parameters[0]];
+				playChords = (Generator.generate(parameters));
 				
-				for(int i = 0; i<=parameters[0]; i++) {
+				for(int i = 0; i<parameters[0]; i++) {
 					//Setup Play
-					PlayAudio.play(Generator.generate(parameters)[i]);
+					PlayAudio.play(playChords[i]);
 					
 				}
 			}
