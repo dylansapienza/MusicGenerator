@@ -6,6 +6,7 @@ import java.awt.TextField;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -15,9 +16,7 @@ import javax.swing.JCheckBox;
 public class MusicGenGui {
 
 	private JFrame frame;
-	private TextField textAmtChords;
 	static int[] parameters = new int [6];
-	private JCheckBox chckbxAtonal;
 
 	/**
 	 * Launch the application.
@@ -56,32 +55,41 @@ public class MusicGenGui {
 		frame.getContentPane().add(titleText);
 		
 		int amtChords = 0;
-		textAmtChords = new TextField();
-		textAmtChords.setText(Integer.toString(amtChords));
-		textAmtChords.setBounds(635, 141, 36, 33);
+		TextField textAmtChords = new TextField();
+		textAmtChords.setText("4");
+		textAmtChords.setBounds(556, 144, 36, 33);
 		frame.getContentPane().add(textAmtChords);
 		
 		JLabel lblAmountOfChords = new JLabel("Amount of Chords:");
-		lblAmountOfChords.setBounds(437, 144, 210, 26);
+		lblAmountOfChords.setBounds(437, 144, 97, 26);
 		frame.getContentPane().add(lblAmountOfChords);
+		
+		JCheckBox checkAtonal = new JCheckBox("Atonal");
+		checkAtonal.setBounds(43, 85, 78, 23);
+		frame.getContentPane().add(checkAtonal);
+		
+		JCheckBox checkTonal = new JCheckBox("Tonal");
+		checkTonal.setBounds(123, 85, 97, 23);
+		frame.getContentPane().add(checkTonal);
 		
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				for(int i = 0; i <= 12; i ++) {
-					if(chckbxAtonal.isSelected() == true) {
-						
-						String amt = textAmtChords.getText();
-						parameters[0] = Integer.parseInt(amt);
-						parameters[1] = 0;
-					}
-					//Break This Up
-					int [] playChords = new int[parameters[0]];
-					playChords = Generator.generate(parameters);
-					PlayAudio.play(playChords[i]);
+				parameters[0] = Integer.parseInt(textAmtChords.getText());
 				
+				if(checkAtonal.isSelected() == true && checkTonal.isSelected() == true) {
+					JOptionPane.showMessageDialog(null, "Tonal and Atonal Cannot Both Be Selected", "Contradicting Selection", JOptionPane.WARNING_MESSAGE);
+					return;
 				}
+				
+				if(checkAtonal.isSelected() == true) {
+					parameters[1] = 0;
+				}
+				if(checkTonal.isSelected() == true) {
+					parameters[1] = 1;
+				}
+			
 			}
 		});
 		btnGenerate.setBounds(161, 300, 89, 23);
@@ -99,12 +107,7 @@ public class MusicGenGui {
 		btnPlay.setBounds(316, 300, 89, 23);
 		frame.getContentPane().add(btnPlay);
 		
-		chckbxAtonal = new JCheckBox("Atonal");
-		chckbxAtonal.setSelected(true);
-		chckbxAtonal.setBounds(43, 85, 97, 23);
-		frame.getContentPane().add(chckbxAtonal);
+
 	}
-	public JCheckBox getChckbxAtonal() {
-		return chckbxAtonal;
-	}
+
 }
