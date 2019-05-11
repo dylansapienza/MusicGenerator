@@ -72,23 +72,43 @@ public class MusicGenGui {
 		checkTonal.setBounds(123, 85, 97, 23);
 		frame.getContentPane().add(checkTonal);
 		
+		JCheckBox checkMajor = new JCheckBox("Major");
+		checkMajor.setBounds(43, 130, 78, 23);
+		frame.getContentPane().add(checkMajor);
+		
+		JCheckBox checkMinor = new JCheckBox("Minor");
+		checkMinor.setBounds(123, 130, 78, 23);
+		frame.getContentPane().add(checkMinor);
+		
+		JCheckBox checkV7Chord = new JCheckBox("V7 Chord");
+		checkV7Chord.setBounds(43, 175, 78, 23);
+		frame.getContentPane().add(checkV7Chord);
+		
+		JLabel lblKeyCenter = new JLabel("Key Center:");
+		lblKeyCenter.setBounds(437, 181, 97, 26);
+		frame.getContentPane().add(lblKeyCenter);
+		
+		TextField textKeyCenter = new TextField();
+		textKeyCenter.setText("0");
+		textKeyCenter.setBounds(556, 183, 36, 33);
+		frame.getContentPane().add(textKeyCenter);
+		
+		
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				parameters[0] = Integer.parseInt(textAmtChords.getText());
 				
-				if(checkAtonal.isSelected() == true && checkTonal.isSelected() == true) {
-					JOptionPane.showMessageDialog(null, "Tonal and Atonal Cannot Both Be Selected", "Contradicting Selection", JOptionPane.WARNING_MESSAGE);
-					return;
-				}
+				parameters[1] = CheckInput.checkTonality(checkAtonal, checkTonal);
 				
-				if(checkAtonal.isSelected() == true) {
-					parameters[1] = 0;
-				}
-				if(checkTonal.isSelected() == true) {
-					parameters[1] = 1;
-				}
+				parameters[2] = CheckInput.checkMode(checkMajor, checkMinor);
+				
+				parameters[3] = Integer.parseInt(textKeyCenter.getText());
+				
+				
+				
+				
 			
 			}
 		});
@@ -99,8 +119,12 @@ public class MusicGenGui {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				int [] playChords = new int [parameters[0]];
+				
 				for(int i = 0; i<=parameters[0]; i++) {
 					//Setup Play
+					PlayAudio.play(Generator.generate(parameters)[i]);
+					
 				}
 			}
 		});
@@ -108,6 +132,8 @@ public class MusicGenGui {
 		frame.getContentPane().add(btnPlay);
 		
 
-	}
 
+
+		
+	}
 }
