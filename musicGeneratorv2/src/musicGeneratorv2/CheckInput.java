@@ -3,6 +3,8 @@ package musicGeneratorv2;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
+//Implement Functional Check and Secondary Dominant Check
+
 public class CheckInput {
 	
 	public static int checkTonality(JCheckBox checkAtonal, JCheckBox checkTonal){

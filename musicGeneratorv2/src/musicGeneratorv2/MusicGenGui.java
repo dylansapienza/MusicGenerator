@@ -16,7 +16,8 @@ import javax.swing.JCheckBox;
 public class MusicGenGui {
 
 	private JFrame frame;
-	static int[] parameters = new int [6];
+	public static int[] playChords = new int[16];
+	
 
 	/**
 	 * Launch the application.
@@ -93,6 +94,7 @@ public class MusicGenGui {
 		textKeyCenter.setBounds(556, 183, 36, 33);
 		frame.getContentPane().add(textKeyCenter);
 		
+		int[] parameters = new int [6];
 		
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.addActionListener(new ActionListener() {
@@ -106,10 +108,15 @@ public class MusicGenGui {
 				
 				parameters[3] = Integer.parseInt(textKeyCenter.getText());
 				
+				if(parameters[3] == 0) {
+					parameters[3] = (int)(Math.random() * 12 + 0);
+				}
+				
+				parameters[4] = CheckInput.checkV7Chord(checkV7Chord);
+				
+				playChords = Generator.generate(parameters);
 				
 				
-				
-			
 			}
 		});
 		btnGenerate.setBounds(161, 300, 89, 23);
@@ -119,11 +126,13 @@ public class MusicGenGui {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int [] playChords = new int [parameters[0]];
-				playChords = (Generator.generate(parameters));
+				
 				
 				for(int i = 0; i<parameters[0]; i++) {
-					//Setup Play
+					if(playChords[i] == 0) {
+						return;
+					}
+					
 					PlayAudio.play(playChords[i]);
 					
 				}
