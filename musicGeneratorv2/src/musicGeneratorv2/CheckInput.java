@@ -51,5 +51,23 @@ public class CheckInput {
 			return 0;	
 		}
 	}
+	
+	public static int checkFunctionalHarmony(JCheckBox checkFunctional) {
+		if(checkFunctional.isSelected() == true) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	public static int checkSecondaryDom(JCheckBox checkSecondaryDom) {
+		if(checkSecondaryDom.isSelected() == true) {
+			return 1;			
+		}
+		else {
+			return 0;
+		}
+	}
 
 }

@@ -66,24 +66,33 @@ public class MusicGenGui {
 		frame.getContentPane().add(lblAmountOfChords);
 		
 		JCheckBox checkAtonal = new JCheckBox("Atonal");
-		checkAtonal.setBounds(43, 85, 78, 23);
+		checkAtonal.setBounds(43, 80, 78, 23);
 		frame.getContentPane().add(checkAtonal);
 		
 		JCheckBox checkTonal = new JCheckBox("Tonal");
-		checkTonal.setBounds(123, 85, 97, 23);
+		checkTonal.setBounds(123, 80, 97, 23);
 		frame.getContentPane().add(checkTonal);
 		
 		JCheckBox checkMajor = new JCheckBox("Major");
-		checkMajor.setBounds(43, 130, 78, 23);
+		checkMajor.setBounds(43, 120, 78, 23);
 		frame.getContentPane().add(checkMajor);
 		
 		JCheckBox checkMinor = new JCheckBox("Minor");
-		checkMinor.setBounds(123, 130, 78, 23);
+		checkMinor.setBounds(123, 120, 78, 23);
 		frame.getContentPane().add(checkMinor);
 		
 		JCheckBox checkV7Chord = new JCheckBox("V7 Chord");
-		checkV7Chord.setBounds(43, 175, 78, 23);
+		checkV7Chord.setBounds(43, 160, 78, 23);
 		frame.getContentPane().add(checkV7Chord);
+		
+		JCheckBox checkFunctional = new JCheckBox("Functional Harmony");
+		checkFunctional.setBounds(123, 160, 185, 23);
+		frame.getContentPane().add(checkFunctional);
+		
+		JCheckBox checkSecondaryDom = new JCheckBox("Secondary Dominant");
+		checkSecondaryDom.setBounds(123, 200, 185, 23);
+		frame.getContentPane().add(checkSecondaryDom);
+		
 		
 		JLabel lblKeyCenter = new JLabel("Key Center:");
 		lblKeyCenter.setBounds(437, 181, 97, 26);
@@ -94,7 +103,7 @@ public class MusicGenGui {
 		textKeyCenter.setBounds(556, 183, 36, 33);
 		frame.getContentPane().add(textKeyCenter);
 		
-		int[] parameters = new int [6];
+		int[] parameters = new int [10];
 		
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.addActionListener(new ActionListener() {
@@ -113,6 +122,10 @@ public class MusicGenGui {
 				}
 				
 				parameters[4] = CheckInput.checkV7Chord(checkV7Chord);
+				
+				parameters[5] = CheckInput.checkFunctionalHarmony(checkFunctional);
+				
+				parameters[6] = CheckInput.checkSecondaryDom(checkSecondaryDom);
 				
 				playChords = Generator.generate(parameters);
 				
@@ -140,9 +153,6 @@ public class MusicGenGui {
 		});
 		btnPlay.setBounds(316, 300, 89, 23);
 		frame.getContentPane().add(btnPlay);
-		
-
-
 
 		
 	}

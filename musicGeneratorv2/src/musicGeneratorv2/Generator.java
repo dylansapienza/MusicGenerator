@@ -32,7 +32,7 @@ public class Generator {
 		
 		if(parameters[2] == 1) {
 			generatedChords = generateMinorChords(parameters[0], parameters[3]);
-			tonalChords = generateMajorChords(parameters[0], parameters[3]);
+			tonalChords = generateMinorChords(parameters[0], parameters[3]);
 		}
 		
 		if(parameters[4] == 1) {
@@ -64,23 +64,21 @@ public class Generator {
 		}
 		if(secondaryDominant < 25) {
 			secondaryDominant = secondaryDominant + 24;
-			if(secondaryDominant > 36) {
-				secondaryDominant = secondaryDominant - 12;
-			}
+		}
+		
+		if(secondaryDominant > 36) {
+			secondaryDominant = secondaryDominant - 12;
 		}
 		
 		return secondaryDominant;
 	}
 	
 	public static int[] functionalHarmony(int[] parameters, int[] inputChords, int[] referenceChords) {	
-		int[] outputChords = null;
 		
-		inputChords[parameters[0]] = referenceChords[0];
-		inputChords[parameters[0]-1] = referenceChords[4];
-		
-		
-		
-		return outputChords;
+		inputChords[parameters[0]-1] = referenceChords[0];
+		inputChords[parameters[0]-2] = referenceChords[4];
+				
+		return inputChords;
 	}
 	
 	public static int transformV7Chord (int VChord) {
