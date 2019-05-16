@@ -178,7 +178,7 @@ public class Generator {
 
 
 	public static int [] chordRandomizer(int [] parameters, int [] inputChords) {
-		 int [] outputChords = new int [parameters[0]+1];
+		 int [] outputChords = new int [parameters[0]];
 		
 		 for(int i = 0; i<parameters[0]; i++) {
 			 outputChords[i] = inputChords[(int)(Math.random() * 6 + 0)];

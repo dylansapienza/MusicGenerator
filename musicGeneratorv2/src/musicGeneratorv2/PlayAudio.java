@@ -32,8 +32,4 @@ public class PlayAudio {
       	
     }
     
-    public void stop() {
-  			
-    }
-
 }

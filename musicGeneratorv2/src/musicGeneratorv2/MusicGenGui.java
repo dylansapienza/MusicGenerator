@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import javax.swing.JTextPane;
 
 public class MusicGenGui {
 
@@ -62,7 +63,7 @@ public class MusicGenGui {
 		frame.getContentPane().add(textAmtChords);
 		
 		JLabel lblAmountOfChords = new JLabel("Amount of Chords:");
-		lblAmountOfChords.setBounds(437, 144, 97, 26);
+		lblAmountOfChords.setBounds(437, 144, 113, 26);
 		frame.getContentPane().add(lblAmountOfChords);
 		
 		JCheckBox checkAtonal = new JCheckBox("Atonal");
@@ -99,9 +100,17 @@ public class MusicGenGui {
 		frame.getContentPane().add(lblKeyCenter);
 		
 		TextField textKeyCenter = new TextField();
-		textKeyCenter.setText("0");
+		textKeyCenter.setText("4");
 		textKeyCenter.setBounds(556, 183, 36, 33);
 		frame.getContentPane().add(textKeyCenter);
+		
+		JTextPane textOutput = new JTextPane();
+		textOutput.setBounds(437, 253, 230, 307);
+		frame.getContentPane().add(textOutput);
+		
+		JLabel lblOutput = new JLabel("Output:");
+		lblOutput.setBounds(437, 226, 97, 26);
+		frame.getContentPane().add(lblOutput);
 		
 		int[] parameters = new int [10];
 		
@@ -142,6 +151,7 @@ public class MusicGenGui {
 				
 				
 				for(int i = 0; i<parameters[0]; i++) {
+					
 					if(playChords[i] == 0) {
 						return;
 					}
@@ -149,10 +159,13 @@ public class MusicGenGui {
 					PlayAudio.play(playChords[i]);
 					
 				}
+				
+				textOutput.setText(TextHandler.chordNamer(playChords));
 			}
 		});
 		btnPlay.setBounds(316, 300, 89, 23);
 		frame.getContentPane().add(btnPlay);
+
 
 		
 	}
