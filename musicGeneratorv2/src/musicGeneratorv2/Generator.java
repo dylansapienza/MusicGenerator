@@ -28,6 +28,7 @@ public class Generator {
 		if(parameters[2] == 0) {
 			generatedChords = generateMajorChords(parameters[0], parameters[3]);
 			tonalChords = generateMajorChords(parameters[0], parameters[3]);
+
 		}
 		
 		if(parameters[2] == 1) {
@@ -37,7 +38,7 @@ public class Generator {
 		
 		if(parameters[4] == 1) {
 			generatedChords[4] = transformV7Chord(generatedChords[4]);
-			tonalChords[4] = transformV7Chord(generatedChords[4]);
+			tonalChords[4] = generatedChords[4];
 		}
 		
 		generatedChords = chordRandomizer(parameters, generatedChords);
@@ -82,9 +83,7 @@ public class Generator {
 	}
 	
 	public static int transformV7Chord (int VChord) {
-		
 		int transformedVChord = VChord + 24;
-		
 		
 		return transformedVChord;
 	}
@@ -179,7 +178,7 @@ public class Generator {
 
 
 	public static int [] chordRandomizer(int [] parameters, int [] inputChords) {
-		 int [] outputChords = new int [parameters[0]];
+		 int [] outputChords = new int [parameters[0]+1];
 		
 		 for(int i = 0; i<parameters[0]; i++) {
 			 outputChords[i] = inputChords[(int)(Math.random() * 6 + 0)];
