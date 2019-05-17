@@ -10,7 +10,7 @@ public class CheckInput {
 	public static int checkTonality(JCheckBox checkAtonal, JCheckBox checkTonal){
 		
 		if(checkAtonal.isSelected() == true && checkTonal.isSelected() == true) {
-			JOptionPane.showMessageDialog(null, "Please Selected Either One Tonality", "Contradicting Selection", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Please Select Either Atonal or Tonal", "Contradicting Selection", JOptionPane.WARNING_MESSAGE);
 			return 2;
 		}
 		

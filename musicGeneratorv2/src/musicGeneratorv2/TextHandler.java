@@ -2,7 +2,7 @@ package musicGeneratorv2;
 
 public class TextHandler {
 	
-	//Infnite Loop is in here
+	//Infinite Loop is in here
 	
 	public static String chordNamer(int[] inputChords){
 		
@@ -11,14 +11,14 @@ public class TextHandler {
 		
 		for(int i = 0; i<inputChords.length; i++) {
 			
-			int temp = inputChords[i];
+			rootNote = inputChords[i];
 			
-			while(temp>12) {
+			while(rootNote>12) {
 				
-				rootNote = temp - 12;
-				
+				rootNote -= 12;
 			}
 			
+			//Assigning the Root Note
 			
 			switch(rootNote) {
 				case 1:
@@ -57,12 +57,14 @@ public class TextHandler {
 				case 12:
 					chordList+= "G#";
 					break;
+			
+			//Assigning Chord Quality
 			}
 				if(inputChords[i]<=12) {
 					chordList+="Maj";
 				}
 				else if(inputChords[i]<=24) {
-					chordList+="Min";
+					chordList+="min";
 				}
 				else if(inputChords[i]<=36) {
 					chordList+="7";
