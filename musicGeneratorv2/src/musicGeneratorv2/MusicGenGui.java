@@ -126,6 +126,7 @@ public class MusicGenGui {
 				
 				parameters[3] = Integer.parseInt(textKeyCenter.getText());
 				
+				//If Selected Key is 0 then pick a key
 				if(parameters[3] == 0) {
 					parameters[3] = (int)(Math.random() * 12 + 0);
 				}
@@ -163,6 +164,7 @@ public class MusicGenGui {
 				textOutput.setText(TextHandler.chordNamer(playChords));
 			}
 		});
+		
 		btnPlay.setBounds(316, 300, 89, 23);
 		frame.getContentPane().add(btnPlay);
 

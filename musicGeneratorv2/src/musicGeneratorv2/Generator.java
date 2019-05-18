@@ -15,7 +15,6 @@ public class Generator {
 	 * 7 - 
 	 */
 	
-	
 	public static int[] generate(int [] parameters){
 		
 		int[] generatedChords = new int[parameters[0]];
