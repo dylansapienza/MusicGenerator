@@ -69,6 +69,9 @@ public class TextHandler {
 				else if(inputChords[i]<=36) {
 					chordList+="7";
 				}
+				else if(inputChords[i]<=48) {
+					chordList+="dim7";
+				}
 				
 				chordList+="\n";
 			

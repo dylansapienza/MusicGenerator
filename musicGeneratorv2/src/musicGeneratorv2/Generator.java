@@ -161,6 +161,7 @@ public class Generator {
 		if(majorChords[4]>12) {
 			majorChords[4] = majorChords[4] - 12;
 		}
+		majorChords[6] = majorChords[6] + 24;
 		
 		return majorChords;
 		
