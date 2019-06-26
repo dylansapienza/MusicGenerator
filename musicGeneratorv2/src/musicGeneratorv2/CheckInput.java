@@ -2,6 +2,7 @@ package musicGeneratorv2;
 
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 //Implement Functional Check and Secondary Dominant Check
 
@@ -69,5 +70,26 @@ public class CheckInput {
 			return 0;
 		}
 	}
+	
+	public static int checkKeyCenterVal(JTextField textKeyCenter) {
+		
+		char keyLetter;
+		int keyNumber = 0;
+		keyLetter = textKeyCenter.getText().charAt(0);
+		
+		if(keyLetter == 'a') {
+			keyNumber = 1;
+		}
+		if(keyLetter == 'z') {
+			keyNumber = 7;
+		}
+		
+		System.out.println(keyNumber);
+		return keyNumber;
+	
+	
+	}
+		
+	
 
 }
