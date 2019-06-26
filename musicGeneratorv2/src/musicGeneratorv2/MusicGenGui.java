@@ -100,7 +100,7 @@ public class MusicGenGui {
 		frame.getContentPane().add(lblKeyCenter);
 		
 		TextField textKeyCenter = new TextField();
-		textKeyCenter.setText("4");
+		textKeyCenter.setText("0");
 		textKeyCenter.setBounds(556, 183, 36, 33);
 		frame.getContentPane().add(textKeyCenter);
 		
@@ -129,6 +129,9 @@ public class MusicGenGui {
 				//If Selected Key is 0 then pick a key
 				if(parameters[3] == 0) {
 					parameters[3] = (int)(Math.random() * 12 + 0);
+				}
+				else {
+					//parameters[3] = check
 				}
 				
 				parameters[4] = CheckInput.checkV7Chord(checkV7Chord);

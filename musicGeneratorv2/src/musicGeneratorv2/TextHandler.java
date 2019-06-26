@@ -83,4 +83,23 @@ public class TextHandler {
 		
 
 	}
+	
+	
+	public static int noteToNumber() {
+		
+		
+		
+		
+		
+		
+		return 0;
+		
+		
+		
+		
+	}
+	
+	
+	
+	
 }
