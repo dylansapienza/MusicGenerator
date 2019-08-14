@@ -76,7 +76,17 @@ public class TextHandler {
 				chordList+="\n";
 			
 		}
+		
+		//Printing Out The Chord Code
 			
+			chordList+="\n\nProgression Code:\n";
+		
+			for(int i = 0; i<inputChords.length; i++) {
+				
+				chordList+=Integer.toString(inputChords[i]);
+				chordList+=".";
+						
+			}
 			
 			
 		return chordList;
@@ -95,6 +105,18 @@ public class TextHandler {
 		return 0;
 		
 		
+		
+		
+	}
+	
+	
+	public static int[] codeToChords(String progCode){
+		
+		
+		
+		
+		
+		return null;
 		
 		
 	}

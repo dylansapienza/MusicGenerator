@@ -18,6 +18,7 @@ public class MusicGenGui {
 
 	private JFrame frame;
 	public static int[] playChords = new int[16];
+	private JTextField textFieldProgressionCode;
 	
 
 	/**
@@ -83,7 +84,7 @@ public class MusicGenGui {
 		frame.getContentPane().add(checkMinor);
 		
 		JCheckBox checkV7Chord = new JCheckBox("V7 Chord");
-		checkV7Chord.setBounds(43, 160, 78, 23);
+		checkV7Chord.setBounds(43, 160, 83, 23);
 		frame.getContentPane().add(checkV7Chord);
 		
 		JCheckBox checkFunctional = new JCheckBox("Functional Harmony");
@@ -113,6 +114,7 @@ public class MusicGenGui {
 		frame.getContentPane().add(lblOutput);
 		
 		int[] parameters = new int [10];
+		int[] savedChords = new int[16];
 		
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.addActionListener(new ActionListener() {
@@ -152,8 +154,6 @@ public class MusicGenGui {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				
 				for(int i = 0; i<parameters[0]; i++) {
 					
 					if(playChords[i] == 0) {
@@ -170,6 +170,65 @@ public class MusicGenGui {
 		
 		btnPlay.setBounds(316, 300, 89, 23);
 		frame.getContentPane().add(btnPlay);
+		
+		JButton btnSave = new JButton("SaveProg");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				for(int i = 0; i<parameters[0]; i++) {
+					
+					if(playChords[i] == 0) {
+						return;
+					}
+					
+					savedChords[i] = playChords[i];
+				}
+				
+				
+			}
+		});
+		btnSave.setBounds(43, 461, 121, 23);
+		frame.getContentPane().add(btnSave);
+		
+		JButton btnLoadProg = new JButton("LoadProg");
+		btnLoadProg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				for(int i = 0; i<playChords.length; i++) {
+					playChords[i] = 0;
+				}
+				
+				for(int i = 0; i<parameters[0]; i++) {
+					playChords[i] = savedChords[i];
+				}
+				
+			}
+		});
+		btnLoadProg.setBounds(43, 495, 114, 23);
+		frame.getContentPane().add(btnLoadProg);
+		
+		JLabel lblProgressionSaved = new JLabel("Progression Saved");
+		lblProgressionSaved.setBounds(43, 419, 113, 14);
+		frame.getContentPane().add(lblProgressionSaved);
+		
+		textFieldProgressionCode = new JTextField();
+		textFieldProgressionCode.setBounds(194, 419, 126, 20);
+		frame.getContentPane().add(textFieldProgressionCode);
+		textFieldProgressionCode.setColumns(10);
+		
+		JButton btnLoadProgCode = new JButton("LoadCode");
+		btnLoadProgCode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String progressionCode = textFieldProgressionCode.getText();
+				
+				
+				
+			}
+		});
+		btnLoadProgCode.setBounds(206, 461, 114, 23);
+		frame.getContentPane().add(btnLoadProgCode);
 
 
 		
